@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Special+Elite&display=swap');
+
+:root {
+  --gold: #FFD700;
+  --dark-gold: #B8860B;
+  --red: #CC0000;
+  --navy: #001140;
+  --white: #FFFDF0;
+  --cream: #FFF8DC;
+  --black: #0A0A0A;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--navy);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(255, 215, 0, 0.025) 60px,
+      rgba(255, 215, 0, 0.025) 61px
+    );
+  color: var(--white);
+  font-family: 'Special Elite', cursive;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.divider {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 20%,
+    var(--dark-gold) 50%,
+    var(--gold) 80%,
+    transparent
+  );
+  margin: 24px auto;
+  max-width: 860px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--navy);
+}
