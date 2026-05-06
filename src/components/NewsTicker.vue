@@ -56,7 +56,7 @@ const ticker = [...tickerItems, ...tickerItems].join('  ★  ')
   letter-spacing: 1.5px;
   color: var(--cream);
   padding-left: 100%;
-  animation: scroll-ticker 40s linear infinite;
+  animation: scroll-ticker 80s linear infinite;
 }
 
 @keyframes scroll-ticker {
