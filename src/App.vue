@@ -1,10 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import NewsTicker from './components/NewsTicker.vue'
 import GoldenDie from './components/GoldenDie.vue'
 import WarCard from './components/WarCard.vue'
 import { useWars } from './composables/useWars'
 
-const { dieValue, wars, quote, isRolling, hasRolled, warCount, roll } = useWars()
+const { dieValue, wars, quote, isRolling, hasRolled, warCount, shareUrl, roll } = useWars()
+
+const copied = ref(false)
+
+async function copyShareUrl() {
+  if (!shareUrl.value) return
+  await navigator.clipboard.writeText(shareUrl.value)
+  copied.value = true
+  setTimeout(() => { copied.value = false }, 2000)
+}
 </script>
 
 <template>
@@ -57,6 +67,15 @@ const { dieValue, wars, quote, isRolling, hasRolled, warCount, roll } = useWars(
           <div class="quote-tag">📢 OFFICIAL STATEMENT</div>
           <blockquote class="quote-text">"{{ quote }}"</blockquote>
           <div class="quote-attr">— The President, probably at a golf course</div>
+        </div>
+      </Transition>
+
+      <!-- SHARE -->
+      <Transition name="slide-up">
+        <div v-if="hasRolled" class="share-row">
+          <button class="share-btn" @click="copyShareUrl">
+            {{ copied ? '✅ COPIED!' : '🔗 SHARE THESE WARS' }}
+          </button>
         </div>
       </Transition>
 
@@ -280,6 +299,29 @@ const { dieValue, wars, quote, isRolling, hasRolled, warCount, roll } = useWars(
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.share-row {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.share-btn {
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  border: 2px solid rgba(255,215,0,0.4);
+  padding: 10px 32px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.share-btn:hover {
+  background: rgba(255,215,0,0.08);
+  border-color: var(--gold);
 }
 
 /* FOOTER */
