@@ -257,7 +257,7 @@ function initScene() {
   scene = new THREE.Scene()
 
   camera = new THREE.PerspectiveCamera(36, w / h, 0.1, 100)
-  camera.position.set(0, 1.4, 6.8)
+  camera.position.set(0, 1.4, 5.0)
   camera.lookAt(0, 0, 0)
 
   scene.environment = buildEnvMap()
@@ -431,8 +431,8 @@ onBeforeUnmount(cleanup)
 }
 
 .die-canvas {
-  width: 220px;
-  height: 220px;
+  width: 320px;
+  height: 320px;
   display: block;
   border-radius: 12px;
   outline: none;
@@ -440,7 +440,7 @@ onBeforeUnmount(cleanup)
 }
 
 @media (max-width: 480px) {
-  .die-canvas { width: 170px; height: 170px; }
+  .die-canvas { width: 240px; height: 240px; }
 }
 
 .die-canvas.clickable { cursor: pointer; }
